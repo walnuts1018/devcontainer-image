@@ -1,4 +1,5 @@
 FROM golang:1.23.5-bookworm
+WORKDIR /root
 USER root
 
 ENV ZIM_HOME /root/.zim
@@ -12,7 +13,7 @@ SHELL ["/bin/zsh", "-c"]
 RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/ed996bec519610a171a2c56dc14f324e9cc10281/install.zsh | zsh
 
 RUN sh -c "$(curl -fsLS get.chezmoi.io)"
-RUN mv ~/bin/chezmoi /usr/local/bin/chezmoi
+RUN mv ./bin/chezmoi /usr/local/bin/chezmoi
 RUN chezmoi init --apply https://github.com/walnuts1018/dotfiles
 
 RUN go install golang.org/x/tools/gopls@v0.17.1
