@@ -1,4 +1,4 @@
-FROM golang:1.23.5
+FROM golang:1.23.5-bookworm
 
 # zsh install
 RUN  apt-get update &&  apt-get install -y zsh git vim rsync zip
