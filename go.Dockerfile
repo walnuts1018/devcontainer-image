@@ -1,4 +1,7 @@
 FROM golang:1.23.5-bookworm
+USER root
+
+ENV ZIM_HOME /root/.zim
 
 # zsh install
 RUN  apt-get update &&  apt-get install -y zsh git vim rsync zip
