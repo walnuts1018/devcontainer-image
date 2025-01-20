@@ -9,7 +9,7 @@ RUN  apt-get update &&  apt-get install -y zsh git vim rsync zip
 SHELL ["/bin/zsh", "-c"]
 
 # zim install
-RUN curl -fsSL https://github.com/zimfw/zimfw/releases/download/v1.17.0/zimfw.zsh | zsh
+RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/ed996bec519610a171a2c56dc14f324e9cc10281/install.zsh | zsh
 
 RUN sh -c "$(curl -fsLS get.chezmoi.io)"
 RUN mv ~/bin/chezmoi /usr/local/bin/chezmoi
