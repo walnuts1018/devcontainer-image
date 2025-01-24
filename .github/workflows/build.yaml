@@ -10,7 +10,6 @@ jobs:
     name: Build Docker Image
     strategy:
       matrix:
-        dockerfile: [go.Dockerfile]
         include:
           - os: ubuntu-latest
             platform: linux/amd64
@@ -41,7 +40,7 @@ jobs:
         id: build
         with:
           context: .
-          file: ${{ matrix.dockerfile }}
+          file: go.Dockerfile
           platforms: ${{ matrix.platform }}
           outputs: type=image,name=ghcr.io/${{github.repository}},push-by-digest=true,name-canonical=true,push=true
           cache-from: type=gha,scope=${{ matrix.scopeKey }}
