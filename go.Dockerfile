@@ -2,7 +2,7 @@ FROM golang:1.23.5-bookworm
 WORKDIR /root
 USER root
 
-ENV ZIM_HOME /root/.zim
+ENV ZIM_HOME=/root/.zim
 
 # zsh install
 RUN  apt-get update &&  apt-get install -y zsh git vim rsync zip
