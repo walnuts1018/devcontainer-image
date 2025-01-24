@@ -14,8 +14,10 @@ jobs:
         include:
           - os: ubuntu-latest
             platform: linux/amd64
+            scopeKey: linux-amd64
           - os: ubuntu-latest-arm
             platform: linux/arm64
+            scopeKey: linux-arm64
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out
@@ -34,10 +36,6 @@ jobs:
         with:
           version: latest
 
-      - name: Create Cache Scope Key
-        id: cache-scope-key
-        run: echo "SCOPE_KEY=$(sed 's/[^a-zA-Z0-9]//g' <<<${{ github.repository }})" >> $GITHUB_ENV
-
       - name: Build and push Docker images
         uses: docker/build-push-action@v6
         id: build
@@ -46,8 +44,8 @@ jobs:
           file: ${{ matrix.dockerfile }}
           platforms: ${{ matrix.platform }}
           outputs: type=image,name=ghcr.io/${{github.repository}},push-by-digest=true,name-canonical=true,push=true
-          cache-from: type=gha,scope=${{ steps.cache-scope-key.outputs.SCOPE_KEY }}
-          cache-to: type=gha,mode=max,scope=${{ steps.cache-scope-key.outputs.SCOPE_KEY }}
+          cache-from: type=gha,scope=${{ matrix.scopeKey }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.scopeKey }}
 
       - name: Export digest
         run: |
