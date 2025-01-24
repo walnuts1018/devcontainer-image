@@ -15,7 +15,7 @@ jobs:
           - os: ubuntu-latest
             platform: linux/amd64
             scopeKey: linux-amd64
-          - os: ubuntu-latest-arm
+          - os: ubuntu-24.04-arm
             platform: linux/arm64
             scopeKey: linux-arm64
     runs-on: ${{ matrix.os }}
