@@ -86,5 +86,5 @@ jobs:
         run: |
           docker buildx imagetools create \
             -t ghcr.io/walnuts1018/devcontainer-image-go:latest \
-            -t ghcr.io/walnuts1018/devcontainer-image-go:${{ github.sha }}-${{ github.run_number }} \
+            -t ghcr.io/walnuts1018/devcontainer-image-go:v0.0.${{ github.run_number }} \
             $(printf 'ghcr.io/walnuts1018/devcontainer-image-go@sha256:%s ' *)
