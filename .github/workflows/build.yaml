@@ -11,12 +11,12 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
+          - key: linux-amd64
+            os: ubuntu-latest
             platform: linux/amd64
-            scopeKey: linux-amd64
-          - os: ubuntu-24.04-arm
+          - key: linux-arm64
+            os: ubuntu-24.04-arm
             platform: linux/arm64
-            scopeKey: linux-arm64
     runs-on: ${{ matrix.os }}
     steps:
       - name: Check out
@@ -43,8 +43,8 @@ jobs:
           file: go.Dockerfile
           platforms: ${{ matrix.platform }}
           outputs: type=image,name=ghcr.io/devcontainer-image-go,push-by-digest=true,name-canonical=true,push=true
-          cache-from: type=gha,scope=${{ matrix.scopeKey }}
-          cache-to: type=gha,mode=max,scope=${{ matrix.scopeKey }}
+          cache-from: type=gha,scope=${{ matrix.key }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.key }}
 
       - name: Export digest
         run: |
@@ -55,7 +55,7 @@ jobs:
       - name: Upload digest
         uses: actions/upload-artifact@v4
         with:
-          name: digests-${{ matrix.platform }}
+          name: digests-${{ matrix.key }}
           path: /tmp/digests/*
           if-no-files-found: error
           retention-days: 1
