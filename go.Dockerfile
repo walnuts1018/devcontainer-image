@@ -17,7 +17,7 @@ RUN mv ./bin/chezmoi /usr/local/bin/chezmoi
 RUN chezmoi init --apply https://github.com/walnuts1018/dotfiles
 RUN rm .gitconfig
 
-RUN go install golang.org/x/tools/gopls@v0.17.1
+RUN go install golang.org/x/tools/gopls@v0.18.1
 RUN go install github.com/cweill/gotests/gotests@v1.6.0
 RUN go install github.com/fatih/gomodifytags@v1.17.0
 RUN go install github.com/josharian/impl@latest
