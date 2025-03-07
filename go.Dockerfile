@@ -23,6 +23,6 @@ RUN go install github.com/fatih/gomodifytags@v1.17.0
 RUN go install github.com/josharian/impl@latest
 RUN go install github.com/haya14busa/goplay/cmd/goplay@v1.0.0
 RUN go install github.com/go-delve/delve/cmd/dlv@v1.24.1
-RUN go install honnef.co/go/tools/cmd/staticcheck@v0.6.0
+RUN go install honnef.co/go/tools/cmd/staticcheck@v0.6.1
 
 CMD ["/bin/zsh"]
