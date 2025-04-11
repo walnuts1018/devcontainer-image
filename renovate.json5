@@ -23,13 +23,7 @@
       datasourceTemplate: "go",
     },
   ],
-  packageRules: [
-    {
-      matchUpdateTypes: ["patch"],
-      matchCurrentVersion: "!/^0/",
-      automerge: true,
-    },
-  ],
+  automerge: true,
   internalChecksFilter: "none",
   prHourlyLimit: 0,
   prConcurrentLimit: 100,
