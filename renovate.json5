@@ -1,31 +1,39 @@
 {
-  $schema: "https://docs.renovatebot.com/renovate-schema.json",
-  extends: ["github>walnuts1018/renovate-config"],
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'github>walnuts1018/renovate-config',
+  ],
   customManagers: [
     {
-      customType: "regex",
-      matchStringsStrategy: "any",
-      fileMatch: "^.+\.Dockerfile$",
-      matchStrings: [
-        "https:\\/\\/github\\.com\\/(?<depName>.*?)\\/releases\\/download\\/(?<currentValue>[^\\/]+)\\/.*\\s*",
-        "https:\\/\\/raw\\.githubusercontent\\.com\\/(?<depName>.*?)\\/refs\\/tags\\/(?<currentValue>[^\\/]+)\\/.*\\s*",
-        "https:\\/\\/raw\\.githubusercontent\\.com\\/(?<depName>[^/]+\\/[^/]+?)\\/(?<currentValue>[^\\/]+?)\\/.*\\s*",
+      customType: 'regex',
+      matchStringsStrategy: 'any',
+      managerFilePatterns: [
+        '/^.+.Dockerfile$/',
       ],
-      datasourceTemplate: "github-tags",
+      matchStrings: [
+        'https:\\/\\/github\\.com\\/(?<depName>.*?)\\/releases\\/download\\/(?<currentValue>[^\\/]+)\\/.*\\s*',
+        'https:\\/\\/raw\\.githubusercontent\\.com\\/(?<depName>.*?)\\/refs\\/tags\\/(?<currentValue>[^\\/]+)\\/.*\\s*',
+        'https:\\/\\/raw\\.githubusercontent\\.com\\/(?<depName>[^/]+\\/[^/]+?)\\/(?<currentValue>[^\\/]+?)\\/.*\\s*',
+      ],
+      datasourceTemplate: 'github-tags',
     },
     {
-      customType: "regex",
-      matchStringsStrategy: "any",
-      fileMatch: "^.+\.Dockerfile$",
-      matchStrings: [
-        "go install (?<depName>.*?)@(?<currentValue>.*)\\s*",
+      customType: 'regex',
+      matchStringsStrategy: 'any',
+      managerFilePatterns: [
+        '/^.+.Dockerfile$/',
       ],
-      datasourceTemplate: "go",
+      matchStrings: [
+        'go install (?<depName>.*?)@(?<currentValue>.*)\\s*',
+      ],
+      datasourceTemplate: 'go',
     },
   ],
   automerge: true,
-  internalChecksFilter: "none",
+  internalChecksFilter: 'none',
   prHourlyLimit: 0,
   prConcurrentLimit: 100,
-  assignees: ["walnuts1018"],
+  assignees: [
+    'walnuts1018',
+  ],
 }
