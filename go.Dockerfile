@@ -1,8 +1,9 @@
 FROM golang:1.25.1-bookworm
-WORKDIR /root
-USER root
+ENV WORKDIR /home/vscode
+WORKDIR ${WORKDIR}
+USER vscode
 
-ENV ZIM_HOME=/root/.zim
+ENV ZIM_HOME=$HOME/.zim
 
 RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
 RUN --mount=type=cache,target=/var/lib/apt,sharing=locked \
