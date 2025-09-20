@@ -5,6 +5,8 @@ RUN --mount=type=cache,target=/var/lib/apt,sharing=locked \
     --mount=type=cache,target=/var/cache/apt,sharing=locked \
     apt-get -y update && apt-get upgrade -y && apt-get install -y sudo zsh git vim rsync zip ca-certificates
 
+RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+
 RUN groupadd -g 1000 vscode \
     && useradd -s /bin/zsh -u 1000 -g vscode -m vscode \
     && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -20,8 +22,6 @@ ENV ZIM_HOME=${WORKDIR}/.zim
 # zim install
 RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/ed996bec519610a171a2c56dc14f324e9cc10281/install.zsh | zsh
 
-RUN sh -c "$(curl -fsLS get.chezmoi.io)"
-RUN mv ./bin/chezmoi /usr/local/bin/chezmoi
 RUN chezmoi init --apply https://github.com/walnuts1018/dotfiles
 RUN rm .gitconfig
 
