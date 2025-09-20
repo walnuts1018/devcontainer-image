@@ -11,7 +11,7 @@ RUN groupadd -g 1000 vscode \
     && useradd -s /bin/zsh -u 1000 -g vscode -m vscode \
     && echo "vscode ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-ENV WORKDIR /home/vscode
+ENV WORKDIR=/home/vscode
 WORKDIR ${WORKDIR}
 USER vscode
 
