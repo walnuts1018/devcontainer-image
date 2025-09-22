@@ -1,4 +1,4 @@
-FROM golang:1.25.1-trixie
+FROM golang:1.25.1-bookworm
 WORKDIR /root
 USER root
 
