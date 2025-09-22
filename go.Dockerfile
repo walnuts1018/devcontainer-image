@@ -23,7 +23,7 @@ ENV ZIM_HOME=${WORKDIR}/.zim
 RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/ed996bec519610a171a2c56dc14f324e9cc10281/install.zsh | zsh
 
 RUN chezmoi init --apply https://github.com/walnuts1018/dotfiles
-RUN rm .gitconfig
+RUN rm ~/.gitconfig
 
 RUN go install golang.org/x/tools/gopls@v0.20.0
 RUN go install github.com/cweill/gotests/gotests@v1.6.0
