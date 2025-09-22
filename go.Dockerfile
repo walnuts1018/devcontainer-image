@@ -4,8 +4,10 @@ USER root
 
 ENV ZIM_HOME=/root/.zim
 
-# zsh install
-RUN apt-get -y update && apt-get upgrade -y && apt-get install -y zsh git vim rsync zip ca-certificates
+RUN rm -f /etc/apt/apt.conf.d/docker-clean; echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache
+RUN --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    apt-get -y update && apt-get upgrade -y && apt-get install -y zsh git vim rsync zip ca-certificates
 
 SHELL ["/bin/zsh", "-c"]
 
