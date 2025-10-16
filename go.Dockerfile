@@ -33,4 +33,6 @@ RUN go install github.com/haya14busa/goplay/cmd/goplay@v1.0.0
 RUN go install github.com/go-delve/delve/cmd/dlv@v1.25.2
 RUN go install honnef.co/go/tools/cmd/staticcheck@v0.6.1
 
+ENV GOPATH=$HOME/go
+
 CMD ["/bin/zsh"]
