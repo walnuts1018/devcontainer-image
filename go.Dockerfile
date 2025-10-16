@@ -25,7 +25,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/zimfw/install/ed996bec519610a17
 RUN chezmoi init --apply https://github.com/walnuts1018/dotfiles
 RUN rm ~/.gitconfig
 
-ENV GOPATH=${HOME}/go
+ENV GOPATH=/home/vscode/go
 
 RUN go install golang.org/x/tools/gopls@v0.20.0
 RUN go install github.com/cweill/gotests/gotests@v1.6.0
