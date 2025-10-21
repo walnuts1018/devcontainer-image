@@ -28,7 +28,7 @@ RUN rm ~/.gitconfig
 ENV GOPATH=/home/vscode/go
 
 RUN go install golang.org/x/tools/gopls@v0.20.0
-RUN go install github.com/cweill/gotests/gotests@v1.6.0
+RUN go install github.com/cweill/gotests/gotests@v1.8.0
 RUN go install github.com/fatih/gomodifytags@v1.17.0
 RUN go install github.com/josharian/impl@latest
 RUN go install github.com/haya14busa/goplay/cmd/goplay@v1.0.0
